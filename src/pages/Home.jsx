@@ -1,6 +1,11 @@
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 const Home = () => {
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  );
+  console.log(user);
   return (
     <>
       <section className="heading">
@@ -8,7 +13,7 @@ const Home = () => {
         <p>Quinielafy dashboard</p>
       </section>
       <section className="content">
-        <h3>You have not set any goals</h3>
+        <h3>No tienes quinielas activas</h3>
       </section>
     </>
   );
