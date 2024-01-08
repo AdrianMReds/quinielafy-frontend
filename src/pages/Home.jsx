@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { getQuinielas, reset } from "../features/quinielas/quinielaSlice";
+import QuinielaCard from "../components/QuinielaCard";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -36,15 +37,13 @@ const Home = () => {
   return (
     <>
       <section className="heading">
-        <h1>Bienvenido {user && user.name}</h1>
         <p>Quinielafy dashboard</p>
+        <button className="btn">Crear quiniela</button>
       </section>
       <section className="content">
         {quinielas.length > 0 ? (
           quinielas.map((quiniela, idx) => {
-            return (
-              <p key={idx}>{`${quiniela.name} ${quiniela.entranceMoney}`}</p>
-            );
+            return <QuinielaCard quiniela={quiniela} />;
           })
         ) : (
           <h3>No tienes quinielas</h3>

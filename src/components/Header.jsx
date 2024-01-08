@@ -22,11 +22,16 @@ const Header = () => {
       </div>
       <ul>
         {user ? (
-          <li>
-            <button className="btn" onClick={onLogout}>
-              <FaSignOutAlt /> Logout
-            </button>
-          </li>
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <li>
+              <p>Bienvenido, {user && user.name.split(" ")[0]}</p>
+            </li>
+            <li>
+              <button className="btn" onClick={onLogout}>
+                <FaSignOutAlt /> Logout
+              </button>
+            </li>
+          </div>
         ) : (
           <>
             <li>

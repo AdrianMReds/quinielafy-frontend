@@ -80,10 +80,18 @@ h3 {
   font-weight: 700;
   margin-bottom: 30px;
   padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .heading p {
   color: #828282;
+}
+
+.heading .btn{
+  width: 50%;
+  margin: 10px;
 }
 
 .goals {
@@ -93,10 +101,19 @@ h3 {
 }
 
 .goal {
-  background-color: #f4f4f4;
+  width: 350px;
+  border-radius: 10px;
+  background-color: #cfcfcf;
   margin: 10px 0;
-  padding: 20px 0 10px;
+  padding: 10px 0;
   position: relative;
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.goal.btn{
+  width: 50%;
 }
 
 .goal .close {
