@@ -14,8 +14,22 @@ const getQuinielas = async (token) => {
   return response.data;
 };
 
+//Get quiniela data
+const getQuinielaData = async (token, id) => {
+  console.log(`TOKEN -> ${token}`);
+  const config = {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+  const response = await axios.get(API_URL + `/${id}`, config);
+
+  return response.data;
+};
+
 const quinielaService = {
   getQuinielas,
+  getQuinielaData,
 };
 
 export default quinielaService;

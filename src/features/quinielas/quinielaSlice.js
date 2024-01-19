@@ -3,6 +3,7 @@ import quinielaService from "./quinielaService";
 
 const initialState = {
   quinielas: [],
+  quinielaActiva: {},
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -16,6 +17,24 @@ export const getQuinielas = createAsyncThunk(
     try {
       const token = thunkAPI.getState().auth.user.token;
       return await quinielaService.getQuinielas(token);
+    } catch (error) {
+      const message =
+        (error.response &&
+          error.response.data &&
+          error.response.data.message) ||
+        error.message ||
+        error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
+  }
+);
+
+export const getQuinielaData = createAsyncThunk(
+  "quinielas/getOne",
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      return await quinielaService.getQuinielaData(token, id);
     } catch (error) {
       const message =
         (error.response &&
@@ -45,6 +64,19 @@ export const quinielaSlice = createSlice({
         state.quinielas = action.payload;
       })
       .addCase(getQuinielas.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getQuinielaData.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(getQuinielaData.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.quinielaActiva = action.payload;
+      })
+      .addCase(getQuinielaData.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;

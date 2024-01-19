@@ -34,20 +34,30 @@ const Home = () => {
     return <Spinner />;
   }
 
+  console.log(user);
+
   return (
     <>
       <section className="heading">
-        <p>Quinielafy dashboard</p>
+        <p>Mis quinielas</p>
         <button className="btn">Crear quiniela</button>
       </section>
-      <section className="content">
-        {quinielas.length > 0 ? (
-          quinielas.map((quiniela, idx) => {
-            return <QuinielaCard quiniela={quiniela} />;
-          })
-        ) : (
-          <h3>No tienes quinielas</h3>
-        )}
+      <section className="content" style={{ width: "100%" }}>
+        <div style={{ display: "flex", padding: 15, backgroundColor: "pink" }}>
+          {quinielas.length > 0 ? (
+            quinielas.map((quiniela, idx) => {
+              return (
+                <QuinielaCard
+                  key={quiniela._id}
+                  quiniela={quiniela}
+                  admin={user._id === quiniela.admin}
+                />
+              );
+            })
+          ) : (
+            <h3>No tienes quinielas</h3>
+          )}
+        </div>
       </section>
     </>
   );

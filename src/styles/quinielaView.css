@@ -1,0 +1,25 @@
+
+:root {
+    --containerGray: #828282;
+    --white: #ffffff;
+  }
+
+.tabs{
+    width: 100%;
+    /* background-color: cyan; */
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab{
+    width: 30%;
+    background-color: var(--containerGray);
+    padding: 15px;
+    border-radius: 10px;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+.tab:hover {
+    transform: scale(1.05); /* Hace el componente un poco más grande */
+    background-color: #b4b2b2;
+}
