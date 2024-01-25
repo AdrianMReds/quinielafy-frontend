@@ -3,6 +3,8 @@ import { useSelector, useDispatch } from "react-redux";
 import { useParams, useNavigate } from "react-router-dom";
 import { getQuinielaData, reset } from "../features/quinielas/quinielaSlice";
 import "../styles/quinielaView.css";
+import { FaQuestionCircle } from "react-icons/fa";
+import Spinner from "../components/Spinner";
 
 const QuinielaView = ({ quiniela }) => {
   const navigate = useNavigate();
@@ -37,11 +39,17 @@ const QuinielaView = ({ quiniela }) => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
-  console.log(id);
-  console.log(quinielaActiva);
+  console.log(user._id);
+  console.log(`Admin quiniela -> ${quinielaActiva.admin}`);
 
   return (
     <div>
+      <div className="title">
+        <h1>{quinielaActiva.name}</h1>
+        {user._id === quinielaActiva.admin ?? <FaQuestionCircle />}
+      </div>
+
+      {/* Tabs */}
       <div className="tabs">
         <div
           className="tab"
@@ -78,6 +86,9 @@ const QuinielaView = ({ quiniela }) => {
           Ajustes
         </div>
       </div>
+
+      {/*  */}
+      <div>{JSON.stringify(quinielaActiva)}</div>
     </div>
   );
 };

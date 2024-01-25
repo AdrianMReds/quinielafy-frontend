@@ -23,3 +23,20 @@
     transform: scale(1.05); /* Hace el componente un poco más grande */
     background-color: #b4b2b2;
 }
+
+.title{
+    position: relative;
+}
+
+.title svg {
+    font-size: 24px;
+    position: absolute;
+    top: 50%; /* Ajusta según sea necesario */
+    right: 10px; /* Ajusta según sea necesario */
+    transform: translate(-50%, -50%); /* Centra el icono */
+    transition: font-size 0.2s;
+  }
+
+  .title svg:hover {
+    font-size: 26px; /* Tamaño más grande al pasar el mouse, ajusta según sea necesario */
+  }
