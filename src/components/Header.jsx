@@ -50,7 +50,7 @@ const Header = () => {
     //   </ul>
     // </header>
     <header>
-      <div className="w-full p-4 bg-darkMainColor flex justify-between items-center">
+      <div className="w-full h-[10vh] p-4 bg-darkMainColor flex justify-between items-center">
         <div className="text-2xl text-white">
           <Link to="/">Quinielafy</Link>
         </div>
