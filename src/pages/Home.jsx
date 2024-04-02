@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Spinner from "../components/Spinner";
 import { getQuinielas, reset } from "../features/quinielas/quinielaSlice";
 import QuinielaCard from "../components/QuinielaCard";
+import { logout } from "../features/auth/authSlice";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -17,12 +18,18 @@ const Home = () => {
   useEffect(() => {
     if (isError) {
       console.log(message);
+      dispatch(logout());
+      navigate("/login");
     }
 
     if (!user) {
       navigate("/login");
     } else {
-      dispatch(getQuinielas());
+      try {
+        dispatch(getQuinielas());
+      } catch (error) {
+        console.log(`ERROR -> ${error}`);
+      }
     }
 
     return () => {
@@ -37,29 +44,30 @@ const Home = () => {
   console.log(user);
 
   return (
-    <>
-      <section className="heading">
-        <p>Mis quinielas</p>
-        <button className="btn">Crear quiniela</button>
-      </section>
-      <section className="content" style={{ width: "100%" }}>
-        <div style={{ display: "flex", padding: 15, backgroundColor: "pink" }}>
-          {quinielas.length > 0 ? (
-            quinielas.map((quiniela, idx) => {
-              return (
-                <QuinielaCard
-                  key={quiniela._id}
-                  quiniela={quiniela}
-                  admin={user._id === quiniela.admin}
-                />
-              );
-            })
-          ) : (
-            <h3>No tienes quinielas</h3>
-          )}
-        </div>
-      </section>
-    </>
+    // <>
+    //   <section className="heading">
+    //     <p>Mis quinielas</p>
+    //     <button className="btn">Crear quiniela</button>
+    //   </section>
+    //   <section className="content" style={{ width: "100%" }}>
+    //     <div style={{ display: "flex", padding: 15, backgroundColor: "pink" }}>
+    //       {quinielas.length > 0 ? (
+    //         quinielas.map((quiniela, idx) => {
+    //           return (
+    //             <QuinielaCard
+    //               key={quiniela._id}
+    //               quiniela={quiniela}
+    //               admin={user._id === quiniela.admin}
+    //             />
+    //           );
+    //         })
+    //       ) : (
+    //         <h3>No tienes quinielas</h3>
+    //       )}
+    //     </div>
+    //   </section>
+    // </>
+    <></>
   );
 };
 
