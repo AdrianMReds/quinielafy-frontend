@@ -14,7 +14,7 @@ function App() {
   return (
     <>
       <Router>
-        <div className="container">
+        <div className="w-[100vw]">
           <Header />
           <div className="flex">
             {user && <SideMenu />}

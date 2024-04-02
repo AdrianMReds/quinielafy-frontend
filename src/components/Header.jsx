@@ -74,9 +74,7 @@ const Header = () => {
           ) : (
             <>
               <li>
-                <li>
-                  <p className="text-white text-base">Bienvenido</p>
-                </li>
+                <p className="text-white text-base">Bienvenido</p>
               </li>
             </>
           )}
