@@ -90,9 +90,9 @@ const Login = () => {
     //       </div>
 
     //       <div className="form-group">
-    //         <button type="submit" className="btn btn-block">
-    //           Submit
-    //         </button>
+    // <button type="submit" className="btn btn-block">
+    //   Submit
+    // </button>
     //       </div>
     //     </form>
     //   </section>
@@ -121,7 +121,7 @@ const Login = () => {
               <h4 className="text-xl">Correo electrónico</h4>
               <input
                 type="email"
-                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2"
+                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2 text-black"
                 id="email"
                 name="email"
                 value={email}
@@ -133,13 +133,21 @@ const Login = () => {
               <h4 className="text-xl">Contraseña</h4>
               <input
                 type="password"
-                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2"
+                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2 text-black"
                 id="password"
                 name="password"
                 value={password}
                 placeholder="Ingresa tu contraseña"
                 onChange={onChange}
               />
+            </div>
+            <div className="mb-2">
+              <button
+                type="submit"
+                className="w-full p-3 bg-white text-darkMainColor rounded-md"
+              >
+                Submit
+              </button>
             </div>
           </form>
         </section>
