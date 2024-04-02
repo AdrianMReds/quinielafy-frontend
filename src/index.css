@@ -1,3 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .userDataInput {
+    @apply w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2 text-black;
+  }
+}
+
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
 * {
@@ -10,7 +20,7 @@ body {
   font-family: 'Poppins', sans-serif;
   height: 100vh;
 }
-
+/* 
 a {
   text-decoration: none;
   color: #000;
@@ -235,4 +245,4 @@ h3 {
   .heading p {
     font-size: 1.5rem;
   }
-}
+} */
