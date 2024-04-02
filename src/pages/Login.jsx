@@ -99,7 +99,7 @@ const Login = () => {
     // </div>
     <div className="w-full h-[90vh] flex flex-col justify-center items-center ">
       {/* Cuadro Login */}
-      <div className="w-[40%] h-[60%] p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
+      <div className="w-[40%] h-[65%] p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
         <section id="heading" className="w-[80%] text-center">
           <h1 className="text-3xl my-3">Login</h1>
           <p className="text-xl my-3">Inicia sesión</p>
@@ -121,7 +121,7 @@ const Login = () => {
               <h4 className="text-xl">Correo electrónico</h4>
               <input
                 type="email"
-                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2 text-black"
+                className="userDataInput"
                 id="email"
                 name="email"
                 value={email}
@@ -133,7 +133,7 @@ const Login = () => {
               <h4 className="text-xl">Contraseña</h4>
               <input
                 type="password"
-                className="w-full p-2 border-[1px] border-darkMainColor rounded-md mb-2 text-black"
+                className="userDataInput"
                 id="password"
                 name="password"
                 value={password}
@@ -141,12 +141,12 @@ const Login = () => {
                 onChange={onChange}
               />
             </div>
-            <div className="mb-2">
+            <div className="mb-2 mt-4">
               <button
                 type="submit"
                 className="w-full p-3 bg-white text-darkMainColor rounded-md"
               >
-                Submit
+                Iniciar sesión
               </button>
             </div>
           </form>
