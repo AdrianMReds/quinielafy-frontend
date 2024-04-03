@@ -41,33 +41,21 @@ const Home = () => {
     return <Spinner />;
   }
 
-  console.log(user);
+  // console.log(user);
+  console.log(quinielas);
 
   return (
-    // <>
-    //   <section className="heading">
-    //     <p>Mis quinielas</p>
-    //     <button className="btn">Crear quiniela</button>
-    //   </section>
-    //   <section className="content" style={{ width: "100%" }}>
-    //     <div style={{ display: "flex", padding: 15, backgroundColor: "pink" }}>
-    //       {quinielas.length > 0 ? (
-    //         quinielas.map((quiniela, idx) => {
-    //           return (
-    //             <QuinielaCard
-    //               key={quiniela._id}
-    //               quiniela={quiniela}
-    //               admin={user._id === quiniela.admin}
-    //             />
-    //           );
-    //         })
-    //       ) : (
-    //         <h3>No tienes quinielas</h3>
-    //       )}
-    //     </div>
-    //   </section>
-    // </>
-    <></>
+    <div className="w-[80%] p-2">
+      {quinielas.map((quiniela) => {
+        return (
+          <QuinielaCard
+            key={quiniela._id}
+            quiniela={quiniela}
+            admin={user._id === quiniela.admin}
+          />
+        );
+      })}
+    </div>
   );
 };
 
