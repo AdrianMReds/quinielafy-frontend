@@ -3,30 +3,11 @@ import { Link } from "react-router-dom";
 import { Menu } from "antd";
 
 import {
-  AppstoreOutlined,
-  ContainerOutlined,
-  DesktopOutlined,
-  MailOutlined,
-  MenuFoldOutlined,
-  MenuUnfoldOutlined,
-  PieChartOutlined,
+  UnorderedListOutlined,
+  TrophyFilled,
+  ContactsFilled,
+  BarChartOutlined,
 } from "@ant-design/icons";
-
-function getItem(label, key, icon, children, type) {
-  return {
-    key,
-    icon,
-    children,
-    label,
-    type,
-  };
-}
-
-const items = [
-  getItem("Option 1", "1", <PieChartOutlined />),
-  getItem("Option 2", "2", <DesktopOutlined />),
-  getItem("Option 3", "3", <ContainerOutlined />),
-];
 
 const SideMenu = () => {
   return (
@@ -38,13 +19,28 @@ const SideMenu = () => {
         // items={items}
         className="bg-darkMainColor h-full text-white"
       >
-        <Menu.Item key="home" className=" text-base">
+        <Menu.Item
+          key="home"
+          className=" text-base"
+          icon={<UnorderedListOutlined />}
+        >
           <Link to="/">Quinielas</Link>
         </Menu.Item>
-        <Menu.Item key="about" className=" text-base">
+        <Menu.Item key="about" className=" text-base" icon={<TrophyFilled />}>
           <Link to="/">Torneos</Link>
         </Menu.Item>
-        <Menu.Item key="contact" className=" text-base">
+        <Menu.Item
+          key="statistics"
+          className=" text-base"
+          icon={<BarChartOutlined />}
+        >
+          <Link to="/">Estadísticas</Link>
+        </Menu.Item>
+        <Menu.Item
+          key="contact"
+          className=" text-base"
+          icon={<ContactsFilled />}
+        >
           <Link to="/">Contacto</Link>
         </Menu.Item>
       </Menu>
