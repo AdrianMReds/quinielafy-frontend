@@ -16,31 +16,26 @@ const SideMenu = () => {
         defaultSelectedKeys={["home"]}
         mode="inline"
         theme="dark"
-        // items={items}
         className="bg-darkMainColor h-full text-white"
       >
         <Menu.Item
           key="home"
-          className=" text-base"
+          className=" text-lg"
           icon={<UnorderedListOutlined />}
         >
           <Link to="/">Quinielas</Link>
         </Menu.Item>
-        <Menu.Item key="about" className=" text-base" icon={<TrophyFilled />}>
+        <Menu.Item key="about" className=" text-lg" icon={<TrophyFilled />}>
           <Link to="/">Torneos</Link>
         </Menu.Item>
         <Menu.Item
           key="statistics"
-          className=" text-base"
+          className=" text-lg"
           icon={<BarChartOutlined />}
         >
           <Link to="/">Estadísticas</Link>
         </Menu.Item>
-        <Menu.Item
-          key="contact"
-          className=" text-base"
-          icon={<ContactsFilled />}
-        >
+        <Menu.Item key="contact" className=" text-lg" icon={<ContactsFilled />}>
           <Link to="/">Contacto</Link>
         </Menu.Item>
       </Menu>

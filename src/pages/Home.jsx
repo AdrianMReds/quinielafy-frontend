@@ -41,8 +41,7 @@ const Home = () => {
     return <Spinner />;
   }
 
-  // console.log(user);
-  console.log(quinielas);
+  // console.log(quinielas);
 
   return (
     <div className="w-[80%] p-2">
