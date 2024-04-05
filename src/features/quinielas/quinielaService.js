@@ -16,7 +16,6 @@ const getQuinielas = async (token) => {
 
 //Get quiniela data
 const getQuinielaData = async (token, id) => {
-  console.log(`TOKEN -> ${token}`);
   const config = {
     headers: {
       Authorization: `Bearer ${token}`,

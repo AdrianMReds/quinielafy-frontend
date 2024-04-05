@@ -6,12 +6,12 @@ import "../styles/quinielaView.css";
 import { FaQuestionCircle } from "react-icons/fa";
 import Spinner from "../components/Spinner";
 
-const QuinielaView = ({ quiniela }) => {
+const QuinielaView = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
 
-  const [selectedTab, setSelectedTab] = useState("marcadores");
+  const [selectedTab, setSelectedTab] = useState("predicciones");
 
   const setTab = (newtab) => {
     if (selectedTab !== newtab) {
@@ -39,56 +39,53 @@ const QuinielaView = ({ quiniela }) => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
-  console.log(user._id);
-  console.log(`Admin quiniela -> ${quinielaActiva.admin}`);
+  console.log(JSON.stringify(quinielaActiva));
 
   return (
-    <div>
-      <div className="title">
-        <h1>{quinielaActiva.name}</h1>
-        {user._id === quinielaActiva.admin ?? <FaQuestionCircle />}
-      </div>
-
-      {/* Tabs */}
-      <div className="tabs">
+    <div className="w-[80%] p-5 overflow-y-auto">
+      <h1 className="w-full text-2xl text-center text-darkMainColor">
+        {quinielaActiva.name}
+      </h1>
+      <div id="tabs" className="flex justify-around my-4">
         <div
-          className="tab"
-          style={{
-            backgroundColor:
-              selectedTab === "marcadores" ? "#b4b2b2" : undefined,
+          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+            selectedTab === "predicciones"
+              ? "bg-darkMainColor text-white"
+              : "bg-white text-darkMainColor"
+          }`}
+          onClick={() => {
+            setTab("predicciones");
           }}
+        >
+          Tus predicciones
+        </div>
+
+        <div
+          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+            selectedTab === "marcadores"
+              ? "bg-darkMainColor text-white"
+              : "bg-white text-darkMainColor"
+          }`}
           onClick={() => {
             setTab("marcadores");
           }}
         >
           Marcadores
         </div>
+
         <div
-          className="tab"
-          style={{
-            backgroundColor: selectedTab === "tabla" ? "#b4b2b2" : undefined,
-          }}
+          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+            selectedTab === "tabla"
+              ? "bg-darkMainColor text-white"
+              : "bg-white text-darkMainColor"
+          }`}
           onClick={() => {
             setTab("tabla");
           }}
         >
           Tabla
         </div>
-        <div
-          className="tab"
-          style={{
-            backgroundColor: selectedTab === "ajustes" ? "#b4b2b2" : undefined,
-          }}
-          onClick={() => {
-            setTab("ajustes");
-          }}
-        >
-          Ajustes
-        </div>
       </div>
-
-      {/*  */}
-      <div>{JSON.stringify(quinielaActiva)}</div>
     </div>
   );
 };
