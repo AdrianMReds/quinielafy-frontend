@@ -54,49 +54,6 @@ const Login = () => {
   };
 
   return (
-    // <div>
-    //   <section className="heading">
-    //     <h1>
-    //       <FaSignInAlt /> Login
-    //     </h1>
-    //     <p>Inicia sesión</p>
-    //   </section>
-
-    //   <section className="form">
-    //     <form onSubmit={onSubmit}>
-    //       <div className="form-group">
-    //         <h4>Correo electrónico</h4>
-    // <input
-    //   type="email"
-    //   className="form-control"
-    //   id="email"
-    //   name="email"
-    //   value={email}
-    //   placeholder="Enter your email"
-    //   onChange={onChange}
-    // />
-    //       </div>
-    //       <div className="form-group">
-    //         <h4>Contraseña</h4>
-    // <input
-    //   type="password"
-    //   className="form-control"
-    //   id="password"
-    //   name="password"
-    //   value={password}
-    //   placeholder="Enter password"
-    //   onChange={onChange}
-    // />
-    //       </div>
-
-    //       <div className="form-group">
-    // <button type="submit" className="btn btn-block">
-    //   Submit
-    // </button>
-    //       </div>
-    //     </form>
-    //   </section>
-    // </div>
     <div className="w-full h-[90vh] flex flex-col justify-center items-center ">
       {/* Cuadro Login */}
       <div className="w-[40%] h-[65%] p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">

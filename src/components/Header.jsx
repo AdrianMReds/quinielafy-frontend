@@ -15,40 +15,6 @@ const Header = () => {
   };
 
   return (
-    // <header className="header">
-    //   <div className="logo">
-    //     <Link to="/">Quinielafy</Link>
-    //   </div>
-    //   <ul>
-    //     {user ? (
-    //       <div style={{ display: "flex", alignItems: "center" }}>
-    //         <li>
-    //           <p>Bienvenido, {user && user.name.split(" ")[0]}</p>
-    //         </li>
-    //         <li>
-    //           <button className="btn" onClick={onLogout}>
-    //             <FaSignOutAlt /> Logout
-    //           </button>
-    //         </li>
-    //       </div>
-    //     ) : (
-    //       <>
-    //         <li>
-    //           <Link to="/login">
-    //             <FaSignInAlt />
-    //             Login
-    //           </Link>
-    //         </li>
-    //         <li>
-    //           <Link to="/register">
-    //             {" "}
-    //             <FaUser /> Register
-    //           </Link>
-    //         </li>
-    //       </>
-    //     )}
-    //   </ul>
-    // </header>
     <header>
       <div className="w-full h-[10vh] p-4 bg-darkMainColor flex justify-between items-center">
         <div className="text-2xl text-white">
