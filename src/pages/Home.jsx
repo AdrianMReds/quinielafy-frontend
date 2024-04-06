@@ -9,6 +9,7 @@ import { PlusOutlined } from "@ant-design/icons";
 import { Modal } from "antd";
 import CreateQuinielaModal from "../components/CreateQuinielaModal";
 import tournamentService from "../api/tournamentService";
+import quinielaService from "../api/quinielaService";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -21,6 +22,22 @@ const Home = () => {
   const { quinielas, isLoading, isError, message } = useSelector(
     (state) => state.quinielas
   );
+
+  const handleCreateQuiniela = async (quinielaData) => {
+    try {
+      const response = await quinielaService.createQuiniela(
+        quinielaData,
+        user.token
+      );
+      if (response.status === 200) {
+        const newQuiniela = response.data;
+        console.log(newQuiniela);
+        navigate(`/quiniela/${newQuiniela._id}`);
+      }
+    } catch (error) {
+      console.error(`Error creando quiniela: ${error}`);
+    }
+  };
 
   useEffect(() => {
     if (isError) {
@@ -47,7 +64,9 @@ const Home = () => {
   useEffect(() => {
     const fetchTournaments = async () => {
       try {
-        const tournaments = await tournamentService.getAllTournaments();
+        const tournaments = await tournamentService.getAllTournaments(
+          user.token
+        );
         setTorneos(tournaments?.data);
       } catch (error) {
         console.error(`Error al obtener torneos: ${error}`);
@@ -61,11 +80,8 @@ const Home = () => {
     return <Spinner />;
   }
 
-  // console.log(quinielas);
-  console.log(torneos);
-
   return (
-    <div className="w-[80%] p-2 relative">
+    <div className="w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 relative overflow-auto">
       {quinielas.map((quiniela) => {
         return (
           <QuinielaCard
@@ -87,6 +103,7 @@ const Home = () => {
         openModal={openModal}
         setOpenModal={setOpenModal}
         torneos={torneos}
+        handleCreateQuiniela={handleCreateQuiniela}
       />
     </div>
   );

@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import { Modal, Form, Input, Select, Button, InputNumber } from "antd";
 import { toast } from "react-toastify";
 
-const CreateQuinielaModal = ({ openModal, setOpenModal, torneos }) => {
-  const [quinielaName, setQuinielaName] = useState("");
-  const [quinielaMoney, setQuinielaMoney] = useState(0);
-  const [selectedTorneo, setSelectedTorneo] = useState(null);
+const CreateQuinielaModal = ({
+  openModal,
+  setOpenModal,
+  torneos,
+  handleCreateQuiniela,
+}) => {
+  const [name, setName] = useState("");
+  const [entranceMoney, setEntranceMoney] = useState(0);
+  const [tournament, setTournament] = useState(null);
 
   const emptyValues = () => {
-    return quinielaName === "" || !selectedTorneo;
+    return name === "" || !tournament;
   };
 
   const tournamentOptions = () => {
@@ -22,8 +27,14 @@ const CreateQuinielaModal = ({ openModal, setOpenModal, torneos }) => {
   };
 
   const handleOk = () => {
-    if (emptyValues) {
+    if (emptyValues()) {
       toast.error("Llena todos los datos obligatorios");
+    } else {
+      handleCreateQuiniela({
+        name,
+        tournament,
+        entranceMoney,
+      });
     }
   };
 
@@ -41,7 +52,7 @@ const CreateQuinielaModal = ({ openModal, setOpenModal, torneos }) => {
         <Input
           placeholder="Nombre de tu quiniela..."
           onChange={(e) => {
-            setQuinielaName(e.target.value);
+            setName(e.target.value);
           }}
         />
       </Form.Item>
@@ -54,7 +65,7 @@ const CreateQuinielaModal = ({ openModal, setOpenModal, torneos }) => {
           options={tournamentOptions()}
           placeholder="Torneo..."
           onChange={(e) => {
-            setSelectedTorneo(e);
+            setTournament(e);
           }}
         />
       </Form.Item>
@@ -62,15 +73,14 @@ const CreateQuinielaModal = ({ openModal, setOpenModal, torneos }) => {
       <Form.Item className="my-1">
         <h4 className="text-sm my-2">Dinero de entrada (Opcional)</h4>
         <InputNumber
-          defaultValue={quinielaMoney}
-          value={quinielaMoney}
+          defaultValue={entranceMoney}
+          value={entranceMoney}
           formatter={(value) =>
             `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
           }
           parser={(value) => value?.replace(/\$\s?|(,*)/g, "")}
           onChange={(e) => {
-            console.log(e);
-            setQuinielaMoney(e);
+            setEntranceMoney(e);
           }}
         />
       </Form.Item>

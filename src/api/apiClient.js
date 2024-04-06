@@ -1,17 +1,21 @@
 // api/apiClient.js
 
 import axios from "axios";
+import { useSelector } from "react-redux";
 import cookies from "react-cookies";
 
-const user = cookies.load("userData");
-
-// Configuración del cliente Axios con la URL base del backend
-const apiClient = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}`, // Reemplaza esta URL con la URL de tu backend
-  headers: {
+const createApiClient = (headers = {}) => {
+  const defaultHeaders = {
     "Content-Type": "application/json",
-    Authorization: `Bearer ${user.token}`,
-  },
-});
+    ...headers,
+  };
 
-export default apiClient;
+  return axios.create({
+    baseURL: `${import.meta.env.VITE_API_URL}`,
+    headers: {
+      ...defaultHeaders,
+    },
+  });
+};
+
+export default createApiClient;

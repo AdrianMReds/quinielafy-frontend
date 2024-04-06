@@ -1,7 +1,8 @@
-import apiClient from "./apiClient";
+import createAPiClient from "./apiClient";
 
 const tournamentService = {
-  getAllTournaments: () => {
+  getAllTournaments: (token) => {
+    const apiClient = createAPiClient({ Authorization: `Bearer ${token}` });
     return apiClient.get("/torneos");
   },
 };
