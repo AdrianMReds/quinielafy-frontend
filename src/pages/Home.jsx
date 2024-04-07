@@ -6,7 +6,6 @@ import { getQuinielas, reset } from "../features/quinielas/quinielaSlice";
 import QuinielaCard from "../components/QuinielaCard";
 import { logout } from "../features/auth/authSlice";
 import { PlusOutlined } from "@ant-design/icons";
-import { Modal } from "antd";
 import CreateQuinielaModal from "../components/CreateQuinielaModal";
 import tournamentService from "../api/tournamentService";
 import quinielaService from "../api/quinielaService";
@@ -31,7 +30,6 @@ const Home = () => {
       );
       if (response.status === 200) {
         const newQuiniela = response.data;
-        console.log(newQuiniela);
         navigate(`/quiniela/${newQuiniela._id}`);
       }
     } catch (error) {

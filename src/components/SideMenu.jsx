@@ -11,7 +11,7 @@ import {
 
 const SideMenu = () => {
   return (
-    <div className="box-border w-[20vw] h-[90vh]   bg-slate-400">
+    <div className="hidden md:block box-border w-[20vw] h-[90vh]   bg-slate-400">
       <Menu
         defaultSelectedKeys={["home"]}
         mode="inline"
