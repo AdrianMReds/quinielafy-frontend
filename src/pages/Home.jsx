@@ -79,7 +79,7 @@ const Home = () => {
   }
 
   return (
-    <div className="w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 relative overflow-auto">
+    <div className="w-full md:w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 pt-16 relative overflow-auto">
       {quinielas.map((quiniela) => {
         return (
           <QuinielaCard

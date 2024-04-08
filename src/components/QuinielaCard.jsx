@@ -6,7 +6,7 @@ import { EditFilled } from "@ant-design/icons";
 
 const QuinielaCard = ({ quiniela, admin }) => {
   return (
-    <div className="w-[35%] relative h-64 m-3 p-3 bg-darkMainColor text-white rounded-md">
+    <div className="w-full md:w-[35%] relative h-64 m-3 p-3 bg-darkMainColor text-white rounded-md">
       <div className="w-full">
         <h2 className="text-xl h-10 my-3 border-b-2 border-b-white">
           {quiniela?.name}
