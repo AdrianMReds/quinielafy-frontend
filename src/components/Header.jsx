@@ -63,7 +63,11 @@ const Header = () => {
       </div>
 
       {/* Responsive side menu */}
-      <ResponsiveSideMenu menu={menu} handleMenu={handleMenu} />
+      <ResponsiveSideMenu
+        menu={menu}
+        handleMenu={handleMenu}
+        onLogout={onLogout}
+      />
     </header>
   );
 };

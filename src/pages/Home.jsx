@@ -62,9 +62,9 @@ const Home = () => {
   useEffect(() => {
     const fetchTournaments = async () => {
       try {
-        const tournaments = await tournamentService.getAllTournaments(
-          user.token
-        );
+        const tournaments = user
+          ? await tournamentService.getAllTournaments(user.token)
+          : null;
         setTorneos(tournaments?.data);
       } catch (error) {
         console.error(`Error al obtener torneos: ${error}`);

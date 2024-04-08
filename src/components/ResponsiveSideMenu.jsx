@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-const ResponsiveSideMenu = ({ menu, handleMenu }) => {
+const ResponsiveSideMenu = ({ menu, handleMenu, onLogout }) => {
   return (
     <div
       className={
