@@ -1,11 +1,12 @@
 import React, { setState, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
 import { MenuOutlined } from "@ant-design/icons";
 import ResponsiveSideMenu from "./ResponsiveSideMenu";
+import ResponsiveAdminSideMenu from "./admin/ResponsiveAdminSideMenu";
 
 const Header = () => {
   const [menu, setMenu] = useState(false);
@@ -13,6 +14,10 @@ const Header = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
+
+  const location = useLocation();
+
+  const currentPath = location.pathname;
 
   const onLogout = () => {
     dispatch(logout());
@@ -27,7 +32,11 @@ const Header = () => {
     <header className="relative">
       <div className="w-full h-[10vh] p-4 bg-darkMainColor flex justify-between items-center">
         <div className="text-2xl text-white">
-          <Link to="/">Quinielafy</Link>
+          {currentPath === "/admin" ? (
+            <Link to="/admin">Quinielafy administradores</Link>
+          ) : (
+            <Link to="/">Quinielafy</Link>
+          )}
         </div>
         {user && (
           <div onClick={handleMenu}>
@@ -63,11 +72,19 @@ const Header = () => {
       </div>
 
       {/* Responsive side menu */}
-      <ResponsiveSideMenu
-        menu={menu}
-        handleMenu={handleMenu}
-        onLogout={onLogout}
-      />
+      {currentPath === "/admin" ? (
+        <ResponsiveAdminSideMenu
+          menu={menu}
+          handleMenu={handleMenu}
+          onLogout={onLogout}
+        />
+      ) : (
+        <ResponsiveSideMenu
+          menu={menu}
+          handleMenu={handleMenu}
+          onLogout={onLogout}
+        />
+      )}
     </header>
   );
 };
