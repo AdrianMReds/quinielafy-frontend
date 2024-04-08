@@ -79,18 +79,17 @@ const Register = () => {
   }
 
   return (
-    <div className="w-full h-[90vh] flex flex-col justify-center items-center ">
-      {/* Cuadro Login */}
-      <div className="w-[45%] p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
+    <div className="w-full h-[90vh] overflow-auto flex flex-col justify-center items-center ">
+      {/* Cuadro Register */}
+      <div className="w-[85%] md:w-[45%] overflow-auto p-4 my-3 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
         <section id="heading" className="w-[80%] text-center">
           <h1 className="text-3xl my-0">Regístrate</h1>
           <p className="text-xl my-0">Crea una cuenta</p>
           <p>
             ¿Ya tienes cuenta?{" "}
-            <a className="font-bold underline">
-              {" "}
-              <Link to="/login">Inicia sesión.</Link>
-            </a>
+            <Link to="/login" className="font-bold underline">
+              Inicia sesión.
+            </Link>
           </p>
         </section>
 
@@ -99,8 +98,8 @@ const Register = () => {
           className="w-[80%] h-full flex flex-col justify-around"
         >
           <form onSubmit={onSubmit}>
-            <div className="flex justify-between mt-2">
-              <div className="mb-2 w-[48%]">
+            <div className="flex flex-col md:flex-row justify-between mt-2">
+              <div className="mb-2 md:w-[48%]">
                 <h4 className="text-xl">Nombre</h4>
                 <input
                   type="text"
@@ -113,7 +112,7 @@ const Register = () => {
                 />
               </div>
 
-              <div className="mb-2 w-[48%]">
+              <div className="mb-2 md:w-[48%]">
                 <h4 className="text-xl">Apellidos</h4>
                 <input
                   type="text"

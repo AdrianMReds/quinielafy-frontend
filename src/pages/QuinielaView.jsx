@@ -41,13 +41,13 @@ const QuinielaView = () => {
   console.log(JSON.stringify(quinielaActiva));
 
   return (
-    <div className="w-[80%] p-5 overflow-y-auto">
+    <div className="w-full md:w-[80%] p-5 overflow-y-auto">
       <h1 className="w-full text-2xl text-center text-darkMainColor">
         {quinielaActiva.name}
       </h1>
       <div id="tabs" className="flex justify-around my-4">
         <div
-          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+          className={`w-[30%] p-2 text-xs md:text-base md:p-4 content-center border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
             selectedTab === "predicciones"
               ? "bg-darkMainColor text-white"
               : "bg-white text-darkMainColor"
@@ -60,7 +60,7 @@ const QuinielaView = () => {
         </div>
 
         <div
-          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+          className={`w-[30%] p-2 text-xs md:text-base md:p-4 content-center border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
             selectedTab === "marcadores"
               ? "bg-darkMainColor text-white"
               : "bg-white text-darkMainColor"
@@ -73,7 +73,7 @@ const QuinielaView = () => {
         </div>
 
         <div
-          className={`w-[30%] p-4 border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
+          className={`w-[30%] p-2 text-xs md:text-base md:p-4 content-center border-2 border-darkMainColor text-center rounded-md hover:text-white hover:bg-darkMainColor cursor-pointer ${
             selectedTab === "tabla"
               ? "bg-darkMainColor text-white"
               : "bg-white text-darkMainColor"

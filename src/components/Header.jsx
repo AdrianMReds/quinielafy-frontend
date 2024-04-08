@@ -1,10 +1,15 @@
-import React from "react";
+import React, { setState, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
 import { logout, reset } from "../features/auth/authSlice";
 
+import { MenuOutlined } from "@ant-design/icons";
+import ResponsiveSideMenu from "./ResponsiveSideMenu";
+
 const Header = () => {
+  const [menu, setMenu] = useState(false);
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { user } = useSelector((state) => state.auth);
@@ -14,13 +19,23 @@ const Header = () => {
     navigate("/login");
   };
 
+  const handleMenu = () => {
+    setMenu(!menu);
+  };
+
   return (
-    <header>
+    <header className="relative">
       <div className="w-full h-[10vh] p-4 bg-darkMainColor flex justify-between items-center">
         <div className="text-2xl text-white">
           <Link to="/">Quinielafy</Link>
         </div>
-        <ul>
+        {user && (
+          <div onClick={handleMenu}>
+            <MenuOutlined className="md:hidden text-white text-xl" />
+          </div>
+        )}
+
+        <ul className="hidden md:block">
           {user ? (
             <div className="flex items-center">
               <li>
@@ -46,6 +61,13 @@ const Header = () => {
           )}
         </ul>
       </div>
+
+      {/* Responsive side menu */}
+      <ResponsiveSideMenu
+        menu={menu}
+        handleMenu={handleMenu}
+        onLogout={onLogout}
+      />
     </header>
   );
 };

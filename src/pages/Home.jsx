@@ -62,9 +62,9 @@ const Home = () => {
   useEffect(() => {
     const fetchTournaments = async () => {
       try {
-        const tournaments = await tournamentService.getAllTournaments(
-          user.token
-        );
+        const tournaments = user
+          ? await tournamentService.getAllTournaments(user.token)
+          : null;
         setTorneos(tournaments?.data);
       } catch (error) {
         console.error(`Error al obtener torneos: ${error}`);
@@ -79,7 +79,7 @@ const Home = () => {
   }
 
   return (
-    <div className="w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 relative overflow-auto">
+    <div className="w-full md:w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 pt-16 relative overflow-auto">
       {quinielas.map((quiniela) => {
         return (
           <QuinielaCard

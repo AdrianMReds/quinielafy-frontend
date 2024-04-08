@@ -56,16 +56,15 @@ const Login = () => {
   return (
     <div className="w-full h-[90vh] flex flex-col justify-center items-center ">
       {/* Cuadro Login */}
-      <div className="w-[40%] h-[65%] p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
+      <div className="w-[85%] md:w-[40%] h-[65%] p-2 md:p-4 bg-darkMainColor text-white flex flex-col justify-between items-center rounded-md">
         <section id="heading" className="w-[80%] text-center">
           <h1 className="text-3xl my-3">Login</h1>
           <p className="text-xl my-3">Inicia sesión</p>
           <p>
             ¿Aún no tienes cuenta?{" "}
-            <a className="font-bold underline">
-              {" "}
-              <Link to="/register">Regístrate.</Link>
-            </a>
+            <Link to="/register" className="font-bold underline">
+              Regístrate.
+            </Link>
           </p>
         </section>
 
