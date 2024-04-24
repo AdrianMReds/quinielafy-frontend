@@ -1,4 +1,4 @@
-import React, { setState, useState } from "react";
+import React, { setState, useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { FaSignInAlt, FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
@@ -28,11 +28,19 @@ const Header = () => {
     setMenu(!menu);
   };
 
+  useEffect(() => {
+    if (currentPath.includes("/admin")) {
+      if (!user || !user.admin) {
+        navigate("/");
+      }
+    }
+  }, []);
+
   return (
     <header className="relative">
       <div className="w-full h-[10vh] p-4 bg-darkMainColor flex justify-between items-center">
         <div className="text-2xl text-white">
-          {currentPath === "/admin" ? (
+          {currentPath.includes("/admin") ? (
             <Link to="/admin">Quinielafy administradores</Link>
           ) : (
             <Link to="/">Quinielafy</Link>
@@ -72,7 +80,7 @@ const Header = () => {
       </div>
 
       {/* Responsive side menu */}
-      {currentPath === "/admin" ? (
+      {currentPath.includes("/admin") ? (
         <ResponsiveAdminSideMenu
           menu={menu}
           handleMenu={handleMenu}

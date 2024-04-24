@@ -14,7 +14,7 @@ const SideMenu = () => {
   const location = useLocation();
 
   const currentPath = location.pathname;
-  return currentPath !== "/admin" ? (
+  return !currentPath.includes("/admin") ? (
     <div className="hidden md:block box-border w-[20vw] h-[90vh]   bg-slate-400">
       <Menu
         defaultSelectedKeys={["home"]}
