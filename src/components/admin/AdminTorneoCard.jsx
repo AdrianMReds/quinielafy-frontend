@@ -16,23 +16,17 @@ const formatDate = (date) => {
     .padStart(2, "0")}/${anio}`;
 };
 
-const AdminQuinielaCard = ({ quiniela }) => {
+const AdminTorneoCard = ({ torneo }) => {
   return (
     <div className="w-full md:w-[30%] relative h-64 m-3 p-3 bg-darkMainColor text-white rounded-md ">
       <div className="w-full">
         <h2 className="text-xl h-10 my-3 border-b-2 border-b-white">
-          {quiniela?.name}
+          {torneo?.name}
         </h2>
-        <p className="my-1 text-nowrap overflow-hidden text-ellipsis">{`Torneo: ${quiniela?.tournament.name}`}</p>
-        <p className="my-1">{`Jornada ${quiniela?.currentJornada}`}</p>
-        <p className="text-nowrap overflow-hidden text-ellipsis">
-          Administrador:{" "}
-          <a className="underline" href="#">
-            {quiniela.admin.name}
-          </a>
-        </p>
-        <p>Fecha de creación: {formatDate(quiniela.createdAt)}</p>
-        <Link to={`/admin/quiniela/${quiniela?._id}`}>
+        <p className="my-1 text-nowrap overflow-hidden text-ellipsis">{`ID: ${torneo?._id}`}</p>
+        <p className="my-1">{`Jornadas ${torneo?.amountOfGames}`}</p>
+        <p>Fecha de creación: {formatDate(torneo.createdAt)}</p>
+        <Link to={`/admin/torneo/${torneo?._id}`}>
           <button className="p-3 absolute bg-white text-darkMainColor rounded-md w-[90%] bottom-3 left-[50%] translate-x-[-50%]">
             Entrar
           </button>
@@ -42,4 +36,4 @@ const AdminQuinielaCard = ({ quiniela }) => {
   );
 };
 
-export default AdminQuinielaCard;
+export default AdminTorneoCard;

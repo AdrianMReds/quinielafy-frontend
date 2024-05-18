@@ -1,26 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
+import adminService from "../../api/adminService";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useLocation } from "react-router-dom";
-import adminService from "../../api/adminService";
-import AdminQuinielaCard from "../../components/admin/AdminQuinielaCard";
+import AdminTorneoCard from "../../components/admin/AdminTorneoCard";
 
-const AdminHome = () => {
+const AdminTorneos = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [quinielas, setQuinielas] = useState([]);
+  const [torneos, setTorneos] = useState([]);
 
   const { user } = useSelector((state) => state.auth);
 
-  const getAllQuinielas = async () => {
+  const getAllTorneos = async () => {
     try {
-      const response = await adminService.getAllQuinielas(user.token);
+      const response = await adminService.getAllTorneos(user.token);
       if (response.status === 200) {
-        setQuinielas(response.data);
+        setTorneos(response.data);
       }
     } catch (error) {
-      console.error(`Error leyendo quinielas: ${error}`);
+      console.error(`Error leyendo torneos: ${error}`);
     }
   };
 
@@ -29,20 +28,22 @@ const AdminHome = () => {
       navigate("/login");
     } else {
       try {
-        getAllQuinielas();
+        getAllTorneos();
       } catch (error) {
         console.log(`ERROR -> ${error}`);
       }
     }
   }, [user, navigate, dispatch]);
 
+  console.log(torneos);
+
   return (
     <div className="w-full md:w-[80%] h-[90vh] flex flex-wrap justify-start content-start p-2 relative overflow-auto">
-      {quinielas.map((quiniela) => {
-        return <AdminQuinielaCard quiniela={quiniela} />;
+      {torneos.map((torneo) => {
+        return <AdminTorneoCard torneo={torneo} />;
       })}
     </div>
   );
 };
 
-export default AdminHome;
+export default AdminTorneos;

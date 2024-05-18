@@ -5,6 +5,10 @@ const adminService = {
     const apiClient = createApiClient({ Authorization: `Bearer ${token}` });
     return apiClient.get("/admin/quinielas");
   },
+  getAllTorneos: (token) => {
+    const apiClient = createApiClient({ Authorization: `Bearer ${token}` });
+    return apiClient.get("/admin/torneos");
+  },
 };
 
 export default adminService;

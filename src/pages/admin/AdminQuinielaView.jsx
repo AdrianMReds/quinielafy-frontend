@@ -37,7 +37,6 @@ const AdminQuinielaView = ({ quiniela }) => {
     };
   }, [user, navigate, isError, message, dispatch]);
 
-  console.log(JSON.stringify(quinielaActiva));
   return (
     <div className="w-full md:w-[80%] p-5 overflow-y-auto">
       <h1 className="w-full text-2xl text-center text-darkMainColor">

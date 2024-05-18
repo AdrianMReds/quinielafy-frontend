@@ -1,6 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu } from "antd";
+import { selectedMenuTab } from "../../utils/functions";
 
 import {
   UnorderedListOutlined,
@@ -12,11 +13,13 @@ import {
 } from "@ant-design/icons";
 
 const AdminSideMenu = () => {
+  const location = useLocation();
+
   const navigate = useNavigate();
   return (
     <div className="hidden md:block box-border w-[20vw] h-[90vh]   bg-slate-400">
       <Menu
-        defaultSelectedKeys={["home"]}
+        defaultSelectedKeys={selectedMenuTab(location.pathname)}
         mode="inline"
         theme="dark"
         className="bg-darkMainColor h-full text-white"
@@ -28,8 +31,8 @@ const AdminSideMenu = () => {
         >
           <Link to="/admin">Quinielas</Link>
         </Menu.Item>
-        <Menu.Item key="about" className=" text-lg" icon={<TrophyFilled />}>
-          <Link to="/admin">Torneos</Link>
+        <Menu.Item key="torneos" className=" text-lg" icon={<TrophyFilled />}>
+          <Link to="/admin/torneos">Torneos</Link>
         </Menu.Item>
         <Menu.Item
           key="statistics"

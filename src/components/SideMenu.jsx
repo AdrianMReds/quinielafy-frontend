@@ -9,6 +9,7 @@ import {
   BarChartOutlined,
 } from "@ant-design/icons";
 import AdminSideMenu from "./admin/AdminSideMenu";
+import { selectedMenuTab } from "../utils/functions";
 
 const SideMenu = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const SideMenu = () => {
   return !currentPath.includes("/admin") ? (
     <div className="hidden md:block box-border w-[20vw] h-[90vh]   bg-slate-400">
       <Menu
-        defaultSelectedKeys={["home"]}
+        defaultSelectedKeys={selectedMenuTab(location.pathname)}
         mode="inline"
         theme="dark"
         className="bg-darkMainColor h-full text-white"

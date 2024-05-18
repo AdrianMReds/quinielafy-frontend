@@ -10,6 +10,7 @@ import QuinielaView from "./pages/QuinielaView";
 import SideMenu from "./components/SideMenu";
 import AdminHome from "./pages/admin/AdminHome";
 import AdminQuinielaView from "./pages/admin/AdminQuinielaView";
+import AdminTorneos from "./pages/admin/AdminTorneos";
 
 function App() {
   const { user } = useSelector((state) => state.auth);
@@ -32,6 +33,7 @@ function App() {
                 path="/admin/quiniela/:id"
                 element={<AdminQuinielaView />}
               />
+              <Route path="/admin/torneos" element={<AdminTorneos />} />
             </Routes>
           </div>
         </div>

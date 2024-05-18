@@ -49,7 +49,7 @@ const ResponsiveAdminSideMenu = ({ menu, handleMenu, onLogout }) => {
             icon={<TrophyFilled />}
             onClick={handleMenu}
           >
-            <Link to="/admin">Torneos</Link>
+            <Link to="/admin/torneos">Torneos</Link>
           </Menu.Item>
 
           <Menu.Item

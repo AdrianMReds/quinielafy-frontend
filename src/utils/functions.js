@@ -6,4 +6,16 @@ const copyToClipboard = async (text) => {
   }
 };
 
-export { copyToClipboard };
+const selectedMenuTab = (path) => {
+  if (path.includes("torneos")) {
+    return ["torneos"];
+  } else if (path.includes("statistics")) {
+    return ["statistics"];
+  } else if (path.includes("users")) {
+    return ["users"];
+  } else {
+    return ["home"];
+  }
+};
+
+export { copyToClipboard, selectedMenuTab };
